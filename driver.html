@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapidRelief | Driver</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="driver-style.css">
+</head>
+<body>
+    <div id="map"></div>
+
+    <div class="ui-layer">
+        <div id="dispatch-screen" class="modal-overlay">
+            <div class="alert-card">
+                <div class="red-tag">🚨 EMERGENCY REQUEST</div>
+                <h2 id="alert-desc">Cardiac Distress</h2>
+                <p id="alert-loc">Knowledge Park III, Noida</p>
+                <div class="btn-group">
+                    <button class="reject-btn" onclick="location.reload()">REJECT</button>
+                    <button class="accept-btn" onclick="startEmergency()">ACCEPT CASE</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="driver-hud" class="hud-container hidden">
+            <div class="hud-card">
+                <div class="hud-header">
+                    <div><small>STATUS</small><br><strong id="nav-mode">EN ROUTE TO PATIENT</strong></div>
+                    <div class="text-right"><small>ETA</small><br><strong id="eta-val">Calculating...</strong></div>
+                </div>
+
+                <div id="patient-data" class="info-box patient-border">
+                    <label>PATIENT CONTACT</label>
+                    <div class="data-row"><strong>Dukhari</strong> <span>+91 98765-XXXXX</span></div>
+                </div>
+
+                <div id="hospital-data" class="info-box hospital-border hidden">
+                    <label>ACCEPTED HOSPITAL</label>
+                    <div class="data-row"><strong id="h-name">Searching...</strong> <span id="h-phone"></span></div>
+                </div>
+
+                <div class="action-stack">
+                    <button id="signal-btn" class="btn-warn" onclick="broadcastSignal()">SIGNAL NEARBY HOSPITALS</button>
+                    <button id="pickup-btn" class="btn-primary" onclick="confirmPickup()">CONFIRM PATIENT PICKUP</button>
+                    <button id="drop-btn" class="btn-danger hidden" onclick="location.reload()">COMPLETE MISSION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="driver-script.js"></script>
+</body>
+</html>

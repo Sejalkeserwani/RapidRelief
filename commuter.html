@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lane Clear - Commuter</title>
+    <link rel="stylesheet" href="commuter-style.css">
+</head>
+<body>
+    <div id="mini-banner" class="mini-alert hidden">
+        <span>🚨 AMBULANCE NEARBY - KEEP LEFT</span>
+    </div>
+
+    <div class="container">
+        <div id="status-card" class="card safe">
+            <div class="radar-circle"></div>
+            <h2 id="main-status">System Standby</h2>
+            <p>Click to initialize AI monitoring</p>
+            <button id="start-btn" class="btn-start">Start Monitoring</button>
+        </div>
+
+        <div id="emergency-overlay" class="overlay hidden">
+            <div class="alert-box">
+                <h1>MOVE LEFT</h1>
+                <p>Ambulance detected behind you</p>
+                <div class="distance-pill"><span id="live-dist">0</span>m away</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="commuter-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapidRelief | Patient</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="patient-style.css">
+</head>
+<body>
+    <div id="map"></div>
+    <div class="app-shell">
+        <nav class="main-nav">
+            <div class="logo">RapidRelief</div>
+            <div class="status-pill">Emergency Dispatch</div> 
+        </nav>
+
+        <main class="stage">
+            <div id="stage-1" class="form-card">
+                <div class="type-selector">
+                    <button type="button" id="btn-known" class="type-btn active" onclick="setPatientMode('known')">Self</button>
+                    <button type="button" id="btn-unknown" class="type-btn" onclick="setPatientMode('unknown')">Unknown</button>
+                </div>
+                <div class="input-group">
+                    <label>Patient Name</label>
+                    <input type="text" id="p-name" placeholder="Enter full name" value="Dukhari">
+                </div>
+                <div class="input-group">
+                    <label>Emergency Description</label>
+                    <input type="text" id="p-desc" placeholder="e.g. Chest pain, accident...">
+                </div>
+                <div id="med-info-fields">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div class="input-group">
+                            <label>Blood Group</label>
+                            <select id="p-blood">
+                                <option value="Unknown">Select</option>
+                                <option>O+</option><option>O-</option><option>A+</option><option>B+</option><option>AB+</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Age</label>
+                            <input type="number" id="p-age" placeholder="Years">
+                        </div>
+                    </div>
+                </div>
+                <button onclick="confirmBooking()" class="primary-btn">REQUEST AMBULANCE</button>
+            </div>
+
+            <div id="stage-3" class="tracking-overlay hidden">
+                <div class="overlay-stack">
+                    <div class="info-card first-aid-card">
+                        <h4>First Aid Guidance</h4>
+                        <ul id="aid-list"></ul>
+                    </div>
+                    <div class="info-card eta-card">
+                        <div id="live-eta" class="eta-line">Waiting for Hospital...</div>
+                        <div id="driver-details" class="driver-info hidden">
+                            <div class="avatar">🚑</div>
+                            <div class="details">
+                                <strong id="dispatch-label">System Searching</strong>
+                                <span id="dist-display">-- km away</span>
+                            </div>
+                            <a href="tel:102" class="call-btn">📞</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="patient-script.js"></script>
+</body>
+</html>

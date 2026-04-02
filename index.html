@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapidRelief | Emergency Response</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <div class="brand-section">
+            <div class="brand-content">
+                <div class="logo-icon">✚</div>
+                <h1>RapidRelief</h1>
+                <p>Connecting patients, drivers, and hospitals in seconds. Every second counts.</p>
+            </div>
+        </div>
+
+        <div class="login-section">
+            <div class="login-card">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Please enter your credentials to access the portal.</p>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" placeholder="name@medical.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="login-btn">Sign In</button>
+                </form>
+
+                <div id="error-msg" class="error-msg">Invalid email or password.</div>
+
+                <div class="helper-box">
+                    <span>Demo Accounts:</span>
+                    <ul>
+                        <li><strong>Patient:</strong> patient@med.com</li>
+                        <li><strong>Driver:</strong> driver@ems.com</li>
+                        <li><strong>Hospital:</strong> admin@cityhope.com</li>
+                        <li><strong>Password:</strong> pass123</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+        

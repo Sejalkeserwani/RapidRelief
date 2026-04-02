@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Emergency Terminal</title>
+    <link rel="stylesheet" href="hospital-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card bot-ui-section">
+            <div class="bot-header">
+                <span class="bot-badge">AI BOT ACTIVE</span>
+                <h3 id="intake-status">STATUS: ACCEPTING</h3>
+            </div>
+            <div class="capacity-controls">
+                <div class="counter-wrap">
+                    <small>LIVE BED CAPACITY</small>
+                    <div class="counter-row" style="display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px;">
+                        <button class="small-btn" onclick="updateBeds(-1)">−</button>
+                        
+                        <span class="count-display" style="font-size: 1.2rem; font-weight: bold;">
+                            <span id="bed-count">0</span> / 
+                            <input type="number" id="total-beds-input" value="20" onchange="updateTotalCapacity()" 
+                                   style="width: 50px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 4px; text-align: center; font-weight: bold;">
+                        </span>
+                        
+                        <button class="small-btn" onclick="updateBeds(1)">+</button>
+                    </div>
+                </div>
+                <button id="toggle-btn" class="override-btn" onclick="toggleManualOverride()">SET BUSY</button>
+            </div>
+            <div class="bot-progress-bg">
+                <div id="progress-bar" class="bot-progress-fill"></div>
+            </div>
+        </div>
+
+        <div id="no-alerts" class="glass-card">
+            <div class="radar"></div>
+            <h2>Waiting for Signal</h2>
+            <p>Scanning for incoming emergencies...</p>
+        </div>
+
+        <div id="emergency-card" class="emergency-active hidden">
+            <div class="alert-header">🚨 INCOMING EMERGENCY</div>
+            <div class="countdown-container">
+                <div id="countdown-bar" class="countdown-fill"></div>
+            </div>
+            <div class="patient-section">
+                <label>PATIENT NAME</label>
+                <h1 id="p-name">Loading...</h1>
+                <p>Condition: <strong id="p-cond">--</strong></p>
+                <p>Allergies: <strong id="p-allergies">--</strong></p>
+                <p>Med History: <strong id="p-history">--</strong></p>
+            </div>
+            <div class="info-grid">
+                <div class="info-box"><small>ETA</small><br><b id="hosp-eta">--</b></div>
+                <div class="info-box"><small>BLOOD</small><br><b id="p-blood">--</b></div>
+            </div>
+            <div class="action-btns">
+                <button id="accept-btn-main" class="btn-accept" onclick="acceptCase()">ACCEPT CASE</button>
+                <button class="btn-reject" onclick="location.reload()">REJECT</button>
+            </div>
+        </div>
+
+        <div id="contact-hub" class="glass-card hidden">
+            <div class="success-tick">✓ CASE EN ROUTE</div>
+            <div class="live-status">LIVE ETA: <span id="live-eta">--</span> MINS</div>
+            <button onclick="location.reload()" class="reset-btn">Complete Case</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="hospital-script.js"></script>
+</body>
+</html>

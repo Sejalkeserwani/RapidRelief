@@ -1,0 +1,42 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body, html { height: 100%; width: 100%; overflow: hidden; }
+
+#map { position: absolute; inset: 0; z-index: 1; }
+.hidden { display: none !important; }
+
+/* The UI Overlay Fix */
+.ui-layer {
+    position: absolute; inset: 0; z-index: 9999;
+    pointer-events: none; /* Map remains draggable */
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
+.modal-overlay { 
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85); 
+    display: flex; align-items: center; justify-content: center; pointer-events: auto;
+}
+
+.alert-card, .hud-card {
+    background: white; width: 92%; max-width: 420px;
+    padding: 24px; border-radius: 24px; box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+    pointer-events: auto; 
+}
+
+.hud-container { width: 100%; display: flex; justify-content: center; margin-top: auto; padding-bottom: 25px; }
+
+/* Info Boxes */
+.info-box { background: #f1f5f9; padding: 12px; border-radius: 12px; margin-top: 10px; border-left: 5px solid #cbd5e1; }
+.patient-border { border-left-color: #3b82f6; }
+.hospital-border { border-left-color: #ef4444; }
+.info-box label { font-size: 10px; color: #64748b; font-weight: 800; display: block; }
+.data-row { display: flex; justify-content: space-between; font-size: 14px; margin-top: 5px; }
+
+/* Buttons */
+.action-stack { display: grid; gap: 8px; margin-top: 15px; }
+button { padding: 16px; border: none; border-radius: 12px; font-weight: 700; color: white; cursor: pointer; }
+.btn-warn { background: #f59e0b; }
+.btn-primary { background: #10b981; }
+.btn-danger { background: #ef4444; }
+.accept-btn { background: #10b981; width: 100%; margin-top: 15px; }
+.reject-btn { background: #f1f5f9; color: #64748b; width: 100%; }
+.text-right { text-align: right; }

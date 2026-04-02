@@ -1,0 +1,24 @@
+body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; padding: 20px; }
+.admin-container { width: 100%; max-width: 450px; text-align: center; }
+.card { background: #1e293b; padding: 25px; border-radius: 20px; margin-bottom: 20px; border: 2px solid #334155; transition: 0.3s; }
+
+/* Setup Section */
+.setup-card { border-top: 4px solid #3b82f6; }
+.input-group { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+#capacity-input { background: #0f172a; border: 1px solid #334155; color: white; padding: 8px; border-radius: 8px; width: 70px; text-align: center; font-size: 1.1rem; }
+
+/* Status Styles */
+.status-open { border-color: #10b981; }
+.status-busy { border-color: #ef4444; background: #450a0a; }
+
+/* Counter & Progress */
+.counter-box { display: flex; justify-content: space-between; align-items: center; margin: 20px 0; }
+.count-btn { background: #334155; color: white; border: none; width: 45px; height: 45px; border-radius: 12px; cursor: pointer; font-size: 1.5rem; }
+.display-text { font-size: 1.8rem; font-weight: bold; }
+
+.progress-bg { background: #334155; height: 10px; border-radius: 10px; overflow: hidden; margin-top: 10px; }
+.progress-fill { background: #10b981; width: 0%; height: 100%; transition: 0.5s ease; }
+
+#toggle-btn { margin-top: 15px; padding: 12px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; background: #334155; color: white; }
+.warning-text { color: #f59e0b; font-weight: bold; margin-top: 10px; }
+.hidden { display: none; }

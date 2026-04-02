@@ -1,0 +1,90 @@
+:root { --red: #e11d48; --green: #16a34a; --bg: #f8fafc; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body, html { height: 100%; width: 100%; overflow: hidden; }
+
+/* The Map Layer */
+#map { 
+    position: absolute; 
+    inset: 0; 
+    z-index: 1; 
+    height: 100vh;
+    width: 100vw;
+    visibility: hidden; 
+}
+#map.show-map { visibility: visible; }
+
+/* The UI Layer */
+.app-shell { 
+    position: relative; 
+    z-index: 10; 
+    height: 100%; 
+    pointer-events: none; /* Allows interacting with map behind UI */
+}
+.app-shell * { pointer-events: auto; }
+
+.main-nav { 
+    background: white; 
+    padding: 15px 25px; 
+    display: flex; 
+    justify-content: space-between; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+}
+.logo { font-weight: 800; color: var(--red); font-size: 1.3rem; }
+
+.stage { 
+    height: calc(100% - 60px); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative; 
+}
+
+.form-card { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 25px; 
+    width: 90%; 
+    max-width: 420px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+}
+.type-selector { display: flex; gap: 10px; margin-bottom: 20px; }
+.type-btn { flex: 1; padding: 12px; border: 2px solid #f1f5f9; border-radius: 12px; font-weight: 600; cursor: pointer; }
+.type-btn.active { border-color: var(--red); color: var(--red); background: #fff1f2; }
+
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; }
+.input-group input, .input-group select { width: 100%; padding: 12px; border: 2px solid #f1f5f9; border-radius: 10px; outline: none; }
+
+.primary-btn { width: 100%; padding: 18px; background: var(--red); color: white; border: none; border-radius: 15px; font-weight: 700; cursor: pointer; }
+
+/* Tracking Overlay at the bottom */
+.tracking-overlay {
+    position: absolute;
+    bottom: 30px;
+    width: 90%;
+    max-width: 380px;
+    z-index: 1000;
+}
+.overlay-stack { display: flex; flex-direction: column; gap: 10px; }
+
+.info-card {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.first-aid-card { border-left: 6px solid var(--green); }
+.eta-card { border-left: 6px solid var(--red); }
+
+.first-aid-card h4 { color: var(--green); font-size: 0.9rem; margin-bottom: 5px; }
+#aid-list { list-style: none; font-size: 0.8rem; color: #475569; }
+#aid-list li span { color: var(--green); font-weight: bold; margin-right: 5px; }
+
+.eta-line { font-weight: 800; color: var(--red); font-size: 1.5rem; }
+.driver-info { display: flex; align-items: center; gap: 12px; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
+.avatar { background: var(--red); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.call-btn { margin-left: auto; background: var(--green); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+
+.hidden { display: none !important; }
+.leaflet-routing-container { display: none !important; }
+.amb-icon { font-size: 30px; transition: all 0.8s linear; }
