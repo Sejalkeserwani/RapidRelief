@@ -26,7 +26,6 @@ function startEmergency() {
     document.getElementById('dispatch-screen').classList.add('hidden');
     document.getElementById('driver-hud').classList.remove('hidden');
     
-    // Begin navigation to Patient
     setRoute(driverLoc, patientLoc, '#3b82f6');
     document.getElementById('eta-val').innerText = "4 mins";
 }
@@ -36,20 +35,21 @@ function broadcastSignal() {
     btn.innerText = "SIGNALING HOSPITALS...";
     btn.style.opacity = "0.7";
 
-    // Pinging Firebase
-    db.ref('live_emergency/broadcast').set({ status: "searching" });
-
-    // Listen for Hospital Acceptance
-    db.ref('live_emergency/broadcast/accepted_by').on('value', (snap) => {
+    // UPDATED PATH: Listening to the same place as Patient/Hospital
+    db.ref('emergency_system/current_case').on('value', (snap) => {
         const data = snap.val();
-        if (data) {
-            hospitalLoc = [data.lat, data.lng];
+        
+        // Logic check: only proceed if status is 'accepted'
+        if (data && data.status === "accepted") {
+            // Using coordinates from database or fallback if missing
+            hospitalLoc = [data.hospitalLat || 28.4710, data.hospitalLng || 77.4810];
+            
             btn.innerText = "HOSPITAL ACQUIRED ✅";
             btn.style.background = "#059669";
+            btn.style.opacity = "1";
             
-            // REVEAL HOSPITAL INFO ONLY NOW
-            document.getElementById('h-name').innerText = data.name;
-            document.getElementById('h-phone').innerText = data.phone;
+            document.getElementById('h-name').innerText = data.accepted_by || "City General";
+            document.getElementById('h-phone').innerText = data.hospitalPhone || "+91 98765-XXXXX";
             document.getElementById('hospital-data').classList.remove('hidden');
         }
     });
@@ -63,7 +63,6 @@ function confirmPickup() {
     document.getElementById('drop-btn').classList.remove('hidden');
     document.getElementById('eta-val').innerText = "9 mins";
 
-    // RE-ROUTE TO HOSPITAL
     setRoute(driverLoc, hospitalLoc, '#ef4444');
 }
 
